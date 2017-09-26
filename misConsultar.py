@@ -160,8 +160,7 @@ blog.save()
 blog.pk = None
 blog.save()
 
-#una a muchas la relacion
-										 # Forward relationship
+#una a muchas la relacion	 
 e = Entry.objects.get(id=2)
 e.blog = some_blog
 e.save()
@@ -191,10 +190,9 @@ e = Entry.objects.get(id=2)
 e.entrydetail = ed									
 			
 **/***************************************/************************/**************************
-#ultimas lineas del codijo
+#ultimas lineas del codijo 
+#Seccion :The pk Lookup Shortcut)
 										 
-The pk Lookup Shortcut
-
 Blog.objects.get(id=14)
 Blog.objects.get(pk=14)
 
