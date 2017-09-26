@@ -188,4 +188,25 @@ ed = EntryDetail.objects.get(id=2)
 ed.entry
 
 e = Entry.objects.get(id=2)
-e.entrydetail = ed										 
+e.entrydetail = ed									
+			
+**/***************************************/************************/**************************
+#ultimas lineas del codijo
+										 
+The pk Lookup Shortcut
+
+Blog.objects.get(id=14)
+Blog.objects.get(pk=14)
+
+# te devuelve de la app blog los datos guardados el id 1,4y7
+Blog.objects.filter(pk__in=[1,4,7])
+
+# Gte devuelve los datos guardados con el id 14
+Blog.objects.filter(pk__gt=14)
+
+# Te crea filtros de busqueda con el id o llave foranea indicada
+Entry.objects.filter(blog__id=3)
+Entry.objects.filter(blog__pk=3)
+Entry.objects.filter(blog=b) 
+Entry.objects.filter(blog=b.id) 
+Entry.objects.filter(blog=5) 

@@ -31,3 +31,7 @@ class Entry(models.Model):
 
     def __str__(self):              # __unicode__ on Python 2
         return self.headline
+
+class EntryDetail(models.Model):
+    entry = models.OneToOneField(Entry, on_delete=models.CASCADE)
+    details = models.TextField()
