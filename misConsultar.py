@@ -146,3 +146,46 @@ Blog.objects.exclude(
     entry__headline__contains='Lennon',
     entry__pub_date__year=2008,
 )
+										 
+#eliminar objectos
+e.delete()
+
+# eliminar objectos 
+Entry.objects.filter(pub_date__year=2005).delete() 
+										 
+#Copiando las instancias 
+blog = Blog(name='My blog', tagline='Blogging is easy')
+blog.save()
+
+blog.pk = None
+blog.save()
+
+#una a muchas la relacion
+										 # Forward relationship
+e = Entry.objects.get(id=2)
+e.blog = some_blog
+e.save()
+
+# Backward relationship
+b = Blog.objects.get(id=1)
+
+# By default
+b.entry_set.all()
+b.entry_set.filter(headline__contains='Lennon')
+b.entry_set.count()
+
+# blog = ForeignKey(Blog, on_delete=models.CASCADE, related_name='entries')
+b.entries.all()
+b.entries.filter(headline__contains='Lennon')
+b.entries.count()
+ 
+#Relacion de uno a uno en django
+class EntryDetail(models.Model):
+    entry = models.OneToOneField(Entry, on_delete=models.CASCADE)
+    details = models.TextField()
+
+ed = EntryDetail.objects.get(id=2)
+ed.entry
+
+e = Entry.objects.get(id=2)
+e.entrydetail = ed										 
